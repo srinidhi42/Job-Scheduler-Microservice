@@ -1,0 +1,157 @@
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+name = "job-scheduler-microservice"
+version = "0.1.0"
+description = "A robust, scalable microservice for scheduling and executing jobs with customizable configurations"
+authors = ["Your Name <your.email@example.com>"]
+readme = "README.md"
+license = "MIT"
+repository = "https://github.com/username/job-scheduler-microservice"
+packages = [{include = "scheduler"}]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Topic :: Software Development :: Libraries :: Application Frameworks",
+]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+fastapi = "^0.95.1"
+uvicorn = {extras = ["standard"], version = "^0.22.0"}
+sqlalchemy = "^2.0.9"
+alembic = "^1.10.4"
+pydantic = {extras = ["email"], version = "^1.10.7"}
+celery = "^5.2.7"
+redis = "^4.5.4"
+psycopg2-binary = "^2.9.6"
+croniter = "^1.3.14"
+python-dotenv = "^1.0.0"
+pytz = "^2023.3"
+prometheus-client = "^0.16.0"
+httpx = "^0.24.0"
+tenacity = "^8.2.2"
+structlog = "^23.1.0"
+pyyaml = "^6.0"
+gunicorn = "^20.1.0"
+flower = "^1.2.0"
+psutil = "^5.9.5"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.3.1"
+pytest-cov = "^4.1.0"
+pytest-asyncio = "^0.21.0"
+pytest-mock = "^3.10.0"
+black = "^23.3.0"
+isort = "^5.12.0"
+mypy = "^1.2.0"
+flake8 = "^6.0.0"
+flake8-docstrings = "^1.7.0"
+pre-commit = "^3.3.1"
+faker = "^18.6.0"
+factory-boy = "^3.2.1"
+pytest-factoryboy = "^2.5.1"
+safety = "^2.3.5"
+types-pytz = "^2023.3.0.0"
+types-redis = "^4.5.4.0"
+types-psutil = "^5.9.5.10"
+
+[tool.poetry.scripts]
+start = "scheduler.main:start"
+scheduler = "scheduler.cli:main"
+
+[tool.black]
+line-length = 88
+target-version = ["py310"]
+include = '\.pyi?$'
+
+[tool.isort]
+profile = "black"
+line_length = 88
+multi_line_output = 3
+include_trailing_comma = true
+force_grid_wrap = 0
+use_parentheses = true
+ensure_newline_before_comments = true
+
+[tool.mypy]
+python_version = "3.10"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+check_untyped_defs = true
+disallow_untyped_decorators = true
+no_implicit_optional = true
+strict_optional = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+warn_no_return = true
+warn_unreachable = true
+
+[[tool.mypy.overrides]]
+module = "tests.*"
+disallow_untyped_defs = false
+disallow_incomplete_defs = false
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = "test_*.py"
+python_classes = "Test*"
+python_functions = "test_*"
+asyncio_mode = "auto"
+markers = [
+    "slow: marks tests as slow (deselect with '-m \"not slow\"')",
+    "integration: marks tests as integration tests",
+    "unit: marks tests as unit tests",
+]
+filterwarnings = [
+    "ignore::DeprecationWarning:distutils.*:",
+    "ignore::DeprecationWarning:pkg_resources.*:",
+]
+
+[tool.coverage.run]
+source = ["scheduler"]
+omit = ["tests/*", "**/__init__.py", "**/__main__.py"]
+branch = true
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "raise NotImplementedError",
+    "if __name__ == .__main__.:",
+    "pass",
+    "raise ImportError",
+]
+fail_under = 80
+show_missing = true
+
+[tool.flake8]
+max-line-length = 88
+extend-ignore = "E203"
+exclude = [
+    ".git",
+    "__pycache__",
+    "dist",
+    "build",
+    "*.egg-info",
+    ".env",
+    ".venv",
+    "venv",
+    "env",
+]
+per-file-ignores = ["__init__.py:F401"]
+
+[tool.bandit]
+exclude_dirs = ["tests", "docs"]
+skips = ["B101"]
+
+[tool.poetry.urls]
+"Bug Tracker" = "https://github.com/username/job-scheduler-microservice/issues"
+"Documentation" = "https://github.com/username/job-scheduler-microservice#readme"
