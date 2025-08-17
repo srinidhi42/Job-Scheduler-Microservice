@@ -1,3 +1,14 @@
+<<<<<<< HEAD
+# Job Scheduler Microservice .gitignore
+# =====================================
+
+# ----- Python -----
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+=======
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
@@ -7,6 +18,7 @@ __pycache__/
 *.so
 
 # Distribution / packaging
+>>>>>>> c5ad0b6dc6aa191555cefbfe74b816a52bfa1738
 .Python
 build/
 develop-eggs/
@@ -20,12 +32,84 @@ parts/
 sdist/
 var/
 wheels/
+<<<<<<< HEAD
+=======
 share/python-wheels/
+>>>>>>> c5ad0b6dc6aa191555cefbfe74b816a52bfa1738
 *.egg-info/
 .installed.cfg
 *.egg
 MANIFEST
 
+<<<<<<< HEAD
+# Virtual Environments
+venv/
+env/
+ENV/
+.env/
+.venv/
+env.bak/
+venv.bak/
+pythonenv*
+virtualenv/
+.python-version
+
+# ----- Project Specific -----
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+scheduler.db
+
+# Local configuration
+.env
+.env.*
+!.env.example
+.flaskenv
+instance/
+*.local.yml
+*.local.yaml
+*.local.json
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Scheduler specific
+celerybeat-schedule
+celerybeat.pid
+celerybeat-schedule.db
+.celery/
+
+# Generated migrations
+migrations/versions/*
+!migrations/versions/.gitkeep
+
+# ----- Docker -----
+.dockerignore
+docker-compose.override.yml
+docker-compose.*.yml
+!docker-compose.yml
+!docker-compose.dev.yml
+!docker-compose.test.yml
+
+# ----- Development Tools -----
+# pytest
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.nox/
+coverage.xml
+*.cover
+.hypothesis/
+.coverage.*
+=======
 # PyInstaller
 #  Usually these files are written by a python script from a template
 #  before PyInstaller builds the exe, so as to inject date/other infos into it.
@@ -153,12 +237,119 @@ venv.bak/
 
 # mkdocs documentation
 /site
+>>>>>>> c5ad0b6dc6aa191555cefbfe74b816a52bfa1738
 
 # mypy
 .mypy_cache/
 .dmypy.json
 dmypy.json
 
+<<<<<<< HEAD
+# Sphinx documentation
+docs/_build/
+docs/api/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+.ipynb
+
+# ----- IDE -----
+# PyCharm
+.idea/
+*.iml
+*.iws
+*.ipr
+*.iws
+.idea_modules/
+out/
+
+# VS Code
+.vscode/
+*.code-workspace
+.history/
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# ----- OS Specific -----
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.stackdump
+[Dd]esktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+*.lnk
+
+# Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
+
+# ----- Package Management -----
+# Poetry
+poetry.lock
+
+# Pipenv
+Pipfile.lock
+
+# ----- Secrets -----
+# Avoid committing sensitive information
+*.pem
+*.key
+*.p8
+*.p12
+*.pfx
+*.cer
+*.crt
+*.der
+*_rsa
+*_dsa
+*_ed25519
+*_ecdsa
+**/secrets/
+**/credentials/
+*_credentials.json
+service-account*.json
+
+# ----- Temporary Files -----
+tmp/
+temp/
+.temp/
+.tmp/
+*.tmp
+*.temp
+*.swp
+*.swo
+=======
 # Pyre type checker
 .pyre/
 
@@ -205,3 +396,4 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+>>>>>>> c5ad0b6dc6aa191555cefbfe74b816a52bfa1738
